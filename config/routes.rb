@@ -4,7 +4,11 @@ Rails.application.routes.draw do
       get '/:token', to: 'applications#show', as: ''
     end
     resources :chats, param: :number, only: [:index, :show, :create, :destroy] do
-      resources :messages, param: :number, only: [:index, :show, :create, :update, :destroy]
+      resources :messages, param: :number, only: [:index, :show, :create, :update, :destroy] do
+        collection do
+          get 'search', to: 'messages#search'
+        end
+      end
     end
   end
 end

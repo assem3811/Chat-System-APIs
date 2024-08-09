@@ -48,3 +48,5 @@ end
 
 
 gem "sidekiq", "~> 7.3"
+
+gem "elasticsearch-model", "~> 8.0"

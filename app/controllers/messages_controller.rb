@@ -50,6 +50,16 @@ class MessagesController < ApplicationController
         render json: { message: "Message deleted" }
     end
 
+    #Search endpoints for Elastic Search
+    def search
+        @application = Application.find_by!(token: params[:application_token])
+        @chat = @application.chats.find_by!(number: params[:chat_number])
+        @messages = @chat.messages.search(params[:query]).records
+    
+        render json: @messages
+    end
+      
+
     private
 
     def message_params
