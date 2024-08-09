@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     collection do
       get '/:token', to: 'applications#show', as: ''
     end
+    resources :chats, param: :number, only: [:index, :show, :create, :destroy]
   end
 end

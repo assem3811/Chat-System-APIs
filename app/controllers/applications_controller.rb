@@ -6,7 +6,7 @@ class ApplicationsController < ApplicationController
         render json: @applications
     end
 
-    #Find an application by Id
+    #Find an application by token
     def show
         @application = Application.find_by!(token: params[:token])
         render json: @application
