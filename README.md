@@ -79,7 +79,7 @@ docker-compose down
 ### Elasticsearch connection issue
 If you encounter issues with Elasticsearch, such as Connection refused, ensure that the Elasticsearch service is running and that the ELASTICSEARCH_URL is correctly configured in your docker-compose.yml. If all set make sure to run this command
 ```bash
-sudo systemctl start elastic search
+sudo systemctl start elasticsearch
 ```
 
 ### Database errors
