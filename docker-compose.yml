@@ -22,10 +22,14 @@ services:
       - discovery.type=single-node
     ports:
       - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    networks:
+      - default
 
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate RAILS_ENV=development && bundle exec rails s -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rake db:migrate && bundle exec rake db:seed && bundle exec rails s -b '0.0.0.0'"
     volumes:
       - .:/app
     ports:
@@ -37,7 +41,8 @@ services:
     environment:
       DATABASE_URL: mysql2://admin2:admin24@db:3306/chat_system_development
       REDIS_URL: redis://redis:6379/0
-      ELASTICSEARCH_URL: http://localhost:9200
+      ELASTICSEARCH_URL: http://elasticsearch:9200
 
 volumes:
   db_data:
+  elasticsearch_data:

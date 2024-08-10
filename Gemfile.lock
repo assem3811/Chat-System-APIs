@@ -89,6 +89,8 @@ GEM
       elasticsearch (~> 8)
       hashie
     erubi (1.13.0)
+    faker (3.4.2)
+      i18n (>= 1.8.11, < 2)
     faraday (2.10.1)
       faraday-net_http (>= 2.0, < 3.2)
       logger
@@ -215,6 +217,7 @@ DEPENDENCIES
   bootsnap
   debug
   elasticsearch-model (~> 8.0)
+  faker
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.4)
