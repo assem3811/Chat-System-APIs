@@ -22,6 +22,7 @@ This is a Ruby on Rails API application designed to manage a chat system. The ap
 
 - Docker
 - Docker Compose
+- It is highly recommended to run the app on Linux OS
 
 ## Getting Started
 
