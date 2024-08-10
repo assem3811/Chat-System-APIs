@@ -1,24 +1,32 @@
-# README
+# Chat System API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails API application designed to manage a chat system. The application supports creating and managing applications, chats, and messages, with integrated Elasticsearch for searching messages. The application is containerized using Docker.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- **Applications**: Manage multiple applications with unique tokens.
+- **Chats**: Each application can have multiple chats.
+- **Messages**: Each chat can contain multiple messages.
+- **Search**: Integrated with Elasticsearch to search through messages.
+- **Dockerized**: Easily set up and run the entire stack with Docker.
 
-* System dependencies
+## Technologies Used
 
-* Configuration
+- Ruby on Rails
+- MySQL
+- Elasticsearch
+- Redis
+- Docker
 
-* Database creation
+## Prerequisites
 
-* Database initialization
+- Docker
+- Docker Compose
 
-* How to run the test suite
+## Getting Started
 
-* Services (job queues, cache servers, search engines, etc.)
+### 1. Clone the Repository
 
-* Deployment instructions
-
-* ...
+```bash
+git clone https://github.com/yourusername/chat-system-api.git
+cd chat-system-api
