@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: chat_system_development
+      MYSQL_USER: admin2
+      MYSQL_PASSWORD: admin24
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.13
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate RAILS_ENV=development && bundle exec rails s -b '0.0.0.0'"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+      - elasticsearch
+    environment:
+      DATABASE_URL: mysql2://admin2:admin24@db:3306/chat_system_development
+      REDIS_URL: redis://redis:6379/0
+      ELASTICSEARCH_URL: http://localhost:9200
+
+volumes:
+  db_data:
